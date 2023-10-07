@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.saugat.finalassignment">
+
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
+<!--    <uses-feature android:name="android.hardware.type.watch" />-->
+
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_INTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_INTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_crown2"
+        android:label="RB"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.FinalAssignment"
+        android:usesCleartextTraffic="true">
+<!--        <uses-library-->
+<!--            android:name="com.google.android.wearable"-->
+<!--            android:required="true" />-->
+
+        <!--
+               Set to true if your app is Standalone, that is, it does not require the handheld
+               app to run.
+        -->
+        <meta-data
+            android:name="com.google.android.wearable.standalone"
+            android:value="true" />
+
+        <activity
+            android:name=".ui.CartActivity"
+            android:label="@string/title_activity_cart" />
+
+        <!-- <uses-library -->
+        <!-- android:name="com.google.android.wearable" -->
+        <!-- android:required="true" /> -->
+        <!-- &lt;!&ndash; -->
+        <!-- Set to true if your app is Standalone, that is, it does not require the handheld -->
+        <!-- app to run. -->
+        <!-- &ndash;&gt; -->
+        <!-- <meta-data -->
+        <!-- android:name="com.google.android.wearable.standalone" -->
+        <!-- android:value="true" /> -->
+        <activity
+            android:name=".ui.InsertFoodActivity"
+            android:label="@string/title_activity_insert_food" />
+        <activity android:name=".ui.SplashActivity" />
+        <activity android:name=".ui.LoginActivity" />
+        <activity
+            android:name=".ui.DashboardActivity"
+            android:label="@string/title_activity_dashboard"
+            android:theme="@style/Theme.FinalAssignment.NoActionBar" />
+        <activity android:name=".ui.SignupActivity" />
+        <activity android:name=".ui.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="20dp"
+    android:background="@drawable/customborder"
+    android:padding="5dp">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/itemImage"
+        android:layout_width="204dp"
+        android:layout_height="136dp"
+        android:src="@drawable/momo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ContentDescription" />
+
+    <TextView
+        android:id="@+id/tvItemName"
+        style="@style/customStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/meticula"
+        android:text="Item Name"
+        android:textSize="17sp"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.536"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/itemImage"
+        tools:ignore="HardcodedText,RtlCompat" />
+
+    <TextView
+        android:id="@+id/tvItemType"
+        style="@style/customStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/meticula"
+        android:text="Non-Veg"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toTopOf="@+id/tvItemRating"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.11" />
+
+    <ImageButton
+        android:id="@+id/btnDots"
+        android:layout_width="49dp"
+        android:layout_height="41dp"
+        android:scaleType="fitXY"
+        android:scaleY="1.2"
+        android:backgroundTint="@color/teal_200"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.56"
+        app:layout_constraintStart_toEndOf="@+id/itemImage"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/dots"
+        tools:ignore="ContentDescription" />
+
+    <TextView
+        android:id="@+id/textView"
+        style="@style/customStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/meticula"
+        android:text="Rs."
+        android:textColor="@color/black"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/tvItemPrice"
+        app:layout_constraintTop_toBottomOf="@+id/itemImage"
+        tools:ignore="HardcodedText" />
+
+    <TextView
+        android:id="@+id/tvItemPrice"
+        style="@style/customStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:fontFamily="@font/meticula"
+        android:text="200"
+        android:textColor="@color/black"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/itemImage"
+        tools:ignore="HardcodedText,RtlCompat,RtlHardcoded" />
+
+    <TextView
+        android:id="@+id/tvItemRating"
+        style="@style/customStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/meticula"
+        android:text="4.5"
+        android:textColor="@color/black"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/itemImage"
+        tools:ignore="MissingConstraints" />
+
+    <ImageButton
+        android:id="@+id/btnAddtoCart"
+        android:layout_width="49dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="32dp"
+        android:scaleType="fitXY"
+        android:scaleY="1.4"
+        android:backgroundTint="@color/teal_200"
+        android:src="@drawable/addtocart"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.549"
+        app:layout_constraintStart_toEndOf="@+id/itemImage"
+        app:layout_constraintTop_toBottomOf="@+id/btnDots"
+        tools:ignore="ContentDescription" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="18dp"
+        android:layout_height="15dp"
+        android:layout_marginTop="8dp"
+        android:scaleType="fitXY"
+        app:layout_constraintEnd_toStartOf="@+id/tvItemRating"
+        app:layout_constraintTop_toBottomOf="@+id/itemImage"
+        app:srcCompat="@drawable/star"
+        tools:ignore="ContentDescription,VectorDrawableCompat" />
+
+    <!--    <RatingBar-->
+    <!--        android:id="@+id/ratingBar"-->
+    <!--        android:progressDrawable="@drawable/my_ratingbar"-->
+    <!--        style="@style/MyRatingBar"-->
+    <!--        android:layout_width="123dp"-->
+    <!--        android:layout_height="28dp"-->
+    <!--        android:layout_marginStart="4dp"-->
+    <!--        android:layout_marginLeft="4dp"-->
+    <!--        android:layout_marginTop="8dp"-->
+    <!--        android:numStars="3"-->
+    <!--        android:rating="4"-->
+    <!--        android:stepSize="0.5"-->
+    <!--        app:layout_constraintStart_toEndOf="@+id/itemImage"-->
+    <!--        app:layout_constraintTop_toBottomOf="@+id/tvItemType"-->
+    <!--        tools:ignore="MissingConstraints" />-->
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,4 @@
+include ':rblibrary'
+include ':rbos'
+include ':app'
+rootProject.name = "FinalAssignment"
