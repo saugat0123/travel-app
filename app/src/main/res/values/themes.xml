@@ -17,11 +17,8 @@
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
-    <style name="Theme.FinalAssignment.AppBarOverlay"
-        parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
-    <style name="Theme.FinalAssignment.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
-<!--    <style name="MyRatingBar" parent="android:Widget.RatingBar">-->
+    <!--    <style name="MyRatingBar" parent="android:Widget.RatingBar">-->
 <!--        <item name="android:progressDrawable">@drawable/my_ratingbar</item>-->
 <!--        <item name="minHeight">18dp</item>-->
 <!--        <item name="maxHeight">18dp</item>-->

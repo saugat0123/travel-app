@@ -10,7 +10,6 @@
     android:paddingTop="20dp"
     android:paddingStart="40dp"
     android:paddingEnd="40dp"
-    android:id="@+id/rootProfileLayout"
     android:background="@drawable/ic_background"
     android:gravity="center|top"
     android:layout_width="match_parent"

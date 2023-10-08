@@ -18,7 +18,6 @@
         tools:context=".ui.SignupActivity">
 
         <TextView
-            android:id="@+id/tvTitle"
             android:ems="10"
             android:text="Signup"
             android:textStyle="bold"
