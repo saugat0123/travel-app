@@ -8,8 +8,13 @@ import android.os.Bundle
 import android.os.Environment
 import android.provider.MediaStore
 import android.util.Log
+import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Transformations.map
+import com.google.android.gms.maps.*
+import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.MarkerOptions
 import com.saugat.finalassignment.R
 import com.saugat.rblibrary.entity.Item
 import com.saugat.rblibrary.repository.ItemRepo
@@ -26,7 +31,7 @@ import java.io.FileOutputStream
 import java.text.SimpleDateFormat
 import java.util.*
 
-class InsertFoodActivity : AppCompatActivity() {
+class InsertFoodActivity : AppCompatActivity(), OnMapReadyCallback {
 
     private lateinit var etName: EditText
     private lateinit var etType: EditText
@@ -34,6 +39,11 @@ class InsertFoodActivity : AppCompatActivity() {
     private lateinit var etRating: EditText
     private lateinit var imgProfile: ImageView
     private lateinit var btnAdd: Button
+
+    private lateinit var mapView: MapView
+    private lateinit var mMap: GoogleMap
+//    private lateinit var btnSaveLocation: Button
+    private var selectedLocation: LatLng? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,6 +63,54 @@ class InsertFoodActivity : AppCompatActivity() {
         imgProfile.setOnClickListener {
             loadPopupMenu()
         }
+
+        mapView = findViewById(R.id.mapView)
+        mapView.onCreate(savedInstanceState)
+        mapView.getMapAsync(this)
+
+    }
+    override fun onMapReady(googleMap: GoogleMap) {
+        mMap = googleMap
+
+        // Set a default location (e.g., your city)
+        val defaultLocation = LatLng(27.6667, 85.3500)
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(defaultLocation, 12f))
+
+        mMap.setOnMapClickListener { latLng ->
+            mMap.clear()
+            mMap.addMarker(MarkerOptions().position(latLng))
+            selectedLocation = latLng
+//            btnSaveLocation.visibility = View.VISIBLE
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        mapView.onResume()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        mapView.onPause()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        mapView.onDestroy()
+    }
+
+    override fun onLowMemory() {
+        super.onLowMemory()
+        mapView.onLowMemory()
+    }
+
+    fun openMap(view: View) {
+        val intent = Intent(this, InsertFoodActivity::class.java)
+        startActivityForResult(intent, MAP_REQUEST_CODE)
+    }
+
+    companion object {
+        private const val MAP_REQUEST_CODE = 1
     }
 
     private var REQUEST_GALLERY_CODE = 0
@@ -88,10 +146,11 @@ class InsertFoodActivity : AppCompatActivity() {
     private fun addFood() {
         val name = etName.text.toString()
         val type = etType.text.toString()
-        val price = etPrice.text.toString().toInt()
-        val rating = etRating.text.toString()
+        val price = (etPrice.text.toString()).toInt()
+        val latitude = selectedLocation?.latitude;
+        val longitude = selectedLocation?.longitude;
 
-        val food = Item(itemName= name,itemType= type, itemPrice= price, itemRating= rating)
+        val food = Item(itemName= name,itemType= type, itemPrice= price, latitude= latitude, longitude = longitude)
         CoroutineScope(Dispatchers.IO).launch {
             try {
                 val itemRepository = ItemRepo()

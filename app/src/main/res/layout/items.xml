@@ -70,8 +70,7 @@
             android:layout_width="28dp"
             android:layout_height="28dp"
             android:layout_marginLeft="20dp"
-            android:contentDescription="Soup"
-            android:src="@drawable/ic_heart"
+            android:src="@drawable/more"
             tools:ignore="HardcodedText" />
 
         <ImageView

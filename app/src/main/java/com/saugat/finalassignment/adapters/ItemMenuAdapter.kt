@@ -42,7 +42,7 @@ class ItemMenuAdapter(private val lstItems: ArrayList<Item>,
         val item = lstItems[position]
         holder.tvItemName.text = item.itemName
         holder.tvItemType.text = item.itemType
-        holder.tvItemRating.text = item.itemRating.toString()
+//        holder.tvItemRating.text = item.itemRating.toString()
         holder.tvItemPrice.text = item.itemPrice.toString()
 
 

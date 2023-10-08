@@ -5,6 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
+    android:background="@drawable/ic_background"
+
     android:orientation="vertical"
     tools:context=".ui.SplashActivity"
     tools:ignore="UseCompoundDrawables">
@@ -12,15 +14,7 @@
     <ImageView
         android:layout_width="200dp"
         android:layout_height="200dp"
-        android:src="@drawable/logo2"
-        android:layout_marginTop="40dp"
-        tools:ignore="ContentDescription" />
-
-    <ImageView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:src="@drawable/ic_namaste"
-        android:layout_marginTop="20dp"
+        android:src="@drawable/traveling"
         tools:ignore="ContentDescription" />
 
 

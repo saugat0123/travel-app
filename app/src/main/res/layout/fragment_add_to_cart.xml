@@ -6,10 +6,20 @@
     android:layout_height="match_parent"
     tools:context=".fragments.CartFragment">
 
+<!--    <TextView-->
+<!--        android:id="@+id/noitems"-->
+<!--        android:paddingTop="20dp"-->
+<!--        android:text="There are no items in the cart"-->
+<!--        android:textAlignment="center"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content">-->
+
+<!--    </TextView>-->
+
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:orientation="vertical"
         tools:ignore="UselessParent">
 
         <androidx.recyclerview.widget.RecyclerView

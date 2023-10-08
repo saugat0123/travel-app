@@ -2,9 +2,11 @@ package com.saugat.finalassignment.ui
 
 import android.content.Intent
 import android.content.SharedPreferences
+import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.*
+import androidx.core.app.ActivityCompat
 import com.google.android.material.snackbar.Snackbar
 import com.saugat.finalassignment.R
 import com.saugat.rblibrary.repository.UserRepo
@@ -15,6 +17,12 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class LoginActivity : AppCompatActivity() {
+
+    private val permissions = arrayOf(
+        android.Manifest.permission.CAMERA,
+        android.Manifest.permission.WRITE_EXTERNAL_STORAGE,
+        android.Manifest.permission.ACCESS_FINE_LOCATION
+    )
 
     private lateinit var btnLogin: Button
     private lateinit var etEmail: EditText
@@ -30,6 +38,10 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
+        if (!hasPermission()) {
+            requestPermission()
+        }
+
         btnLogin = findViewById(R.id.btnLogin)
         etEmail = findViewById(R.id.etEmail)
         etPassword = findViewById(R.id.etPassword)
@@ -40,56 +52,47 @@ class LoginActivity : AppCompatActivity() {
 
         sharedPref = getSharedPreferences("MyPref", MODE_PRIVATE)
         isRemembered = sharedPref.getBoolean("checked", false)
-//        if (isRemembered){
-//            startActivity(Intent(this@LoginActivity, DashboardActivity::class.java))
-//        }
+
 
         btnLogin.setOnClickListener {
-            validate()
-            login()
+            if (validate())
+                login()
         }
 
         tvSignup.setOnClickListener {
             val intent = Intent(this, SignupActivity::class.java)
             startActivity(intent)
         }
+
     }
 
     private fun passData(){
 
     }
+    private fun hasPermission(): Boolean {
+        var hasPermission = true
+        for (permission in permissions) {
+            if (ActivityCompat.checkSelfPermission(
+                    this,
+                    permission
+                ) != PackageManager.PERMISSION_GRANTED
+            ) {
+                hasPermission = false
+            }
+        }
+        return hasPermission
+    }
+
+    private fun requestPermission() {
+        ActivityCompat.requestPermissions(
+            this,
+            permissions, 123
+        )
+    }
 
     private fun login() {
         val email = etEmail.text.toString()
         val password = etPassword.text.toString()
-
-//        var customer: User?
-//        CoroutineScope(Dispatchers.IO).launch {
-//            customer = CustomerDB
-//                    .getInstance(this@LoginActivity)
-//                    .getCustomerDAO()
-//                    .checkCustomer(email,password)
-//            if (customer == null) {
-//                withContext(Dispatchers.Main) {
-//                    val snackbar = Snackbar.make(rootLayout, "Invalid Credentials!!", Snackbar.LENGTH_INDEFINITE)
-//                    snackbar.setAction("Close") {
-//                        snackbar.dismiss()
-//                    }
-//                    snackbar.show()
-//                }
-//            } else {
-//                saveEmailPassword()
-//                startActivity(Intent(this@LoginActivity, DashboardActivity::class.java))
-//            }
-//        }
-
-//        intent.putExtra("emailOfUser", email)
-
-//        val bundle = Bundle()
-//        bundle.putString("emailOfUser",email)
-//
-//        val transaction = this.supportFragmentManager.beginTransaction()
-//        AccountFragment().arguments = bundle
 
         CoroutineScope(Dispatchers.IO).launch {
             try {

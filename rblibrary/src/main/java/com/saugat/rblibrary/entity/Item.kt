@@ -2,24 +2,24 @@ package com.saugat.rblibrary.entity
 
 import android.os.Parcel
 import android.os.Parcelable
+import com.google.android.gms.maps.model.LatLng
 
-
-
-data class Item (
+data class Item(
     var _id: String? = null,
     val itemName: String? = null,
     val photo: String? = null,
     val itemType: String? = null,
-    val itemRating: String? = null,
+    val latitude: Double? = null,
+    val longitude: Double? = null,
     val itemPrice: Int? = null
-)
-    : Parcelable {
+) : Parcelable {
     constructor(parcel: Parcel) : this(
         parcel.readString(),
         parcel.readString(),
         parcel.readString(),
         parcel.readString(),
-        parcel.readString(),
+        parcel.readValue(Double::class.java.classLoader) as? Double,
+        parcel.readValue(Double::class.java.classLoader) as? Double,
         parcel.readValue(Int::class.java.classLoader) as? Int
     ) {
     }
@@ -29,7 +29,8 @@ data class Item (
         parcel.writeString(itemName)
         parcel.writeString(photo)
         parcel.writeString(itemType)
-        parcel.writeString(itemRating)
+        parcel.writeValue(latitude)
+        parcel.writeValue(longitude)
         parcel.writeValue(itemPrice)
     }
 

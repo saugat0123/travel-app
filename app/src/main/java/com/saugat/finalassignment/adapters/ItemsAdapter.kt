@@ -1,6 +1,7 @@
 package com.saugat.finalassignment.adapters
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -30,7 +31,7 @@ class ItemsAdapter(private val lstItems: ArrayList<Item>,
         val itemPrice: TextView = view.findViewById(R.id.itemPrice)
         val itemImg: ImageView = view.findViewById(R.id.itemImg)
         val addToCart: ImageView = view.findViewById(R.id.addToCart)
-//        val like: ImageView = view.findViewById(R.id.like)
+        val like: ImageView = view.findViewById(R.id.like)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
@@ -52,12 +53,25 @@ class ItemsAdapter(private val lstItems: ArrayList<Item>,
                     .into(holder.itemImg)
         }
 
+        holder.like.setOnClickListener {
+            val name = item.itemName
+            val price = item.itemPrice.toString()
+            val pic = item.photo
+            val latitude = item.latitude
+            val longitude = item.longitude
+
+            val items = Item(itemName = name, itemPrice = price.toInt(),photo = pic, latitude = latitude, longitude = longitude)
+            val intent = Intent(context, DetailsActivity::class.java)
+            intent.putExtra("ITEM_DETAILS", items)
+            context.startActivity(intent)
+        }
+
         holder.addToCart.setOnClickListener {
             val name = item.itemName
             val price = item.itemPrice.toString()
             val pic = item.photo
 
-            val carts = Cart(itemName = name,itemPrice = price,photo = pic)
+            val carts = Cart(itemName = name,photo = pic,itemPrice = price)
 
             CoroutineScope(Dispatchers.IO).launch {
                 try {
