@@ -66,7 +66,7 @@ class CartAdapter(private val lstItems: ArrayList<Cart>, val context: Context)
                 ) == PackageManager.PERMISSION_GRANTED
             ) {
                 // If permission is granted, send SMS
-                sendSMS("Hello World!")
+                sendSMS("item name: "+holder.foodName.text.toString()+"\nitem price: "+holder.foodPrice.text.toString())
             } else {
                 // Request SMS permission
                 ActivityCompat.requestPermissions(

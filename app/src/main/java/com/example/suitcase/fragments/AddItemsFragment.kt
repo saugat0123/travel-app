@@ -177,7 +177,7 @@ class AddItemsFragment : Fragment(), OnMapReadyCallback {
                     withContext(Dispatchers.Main) {
                         Toast.makeText(
                             context,
-                            "Food Item Added", Toast.LENGTH_SHORT
+                            "Item Added", Toast.LENGTH_SHORT
                         ).show()
                     }
                 }

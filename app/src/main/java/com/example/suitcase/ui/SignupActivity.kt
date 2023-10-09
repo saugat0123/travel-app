@@ -15,6 +15,7 @@ import com.example.suitcase.R
 import com.example.rblibrary.entity.User
 import com.example.rblibrary.repository.UserRepo
 import de.hdodenhof.circleimageview.CircleImageView
+import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -246,14 +247,17 @@ class SignupActivity : AppCompatActivity() {
     }
 
     private fun validate(): Boolean {
+        val pass = etPassword.text.toString()
+        val cpass = etConfirmPass.text.toString()
+        val correct = pass == cpass
         if(etFirstName.text.toString().isEmpty()){
             etFirstName.error = "Enter First Name"
             etFirstName.requestFocus()
             return false
         }
         if(etLastName.text.toString().isEmpty()){
-            etMail.error = "Enter Email"
-            etMail.requestFocus()
+            etLastName.error = "Enter Last Name"
+            etLastName.requestFocus()
             return false
         }
         if(etPassword.text.toString().isEmpty()){
@@ -266,7 +270,12 @@ class SignupActivity : AppCompatActivity() {
             etConfirmPass.requestFocus()
             return false
         }
-        if (etPassword.text != etConfirmPass.text){
+        if (etPassword.text.toString().length < 6) {
+            etConfirmPass.error = "Enter at least 6 characters"
+            etConfirmPass.requestFocus()
+            return false
+        }
+        if (!correct){
             etConfirmPass.error = "Password do not match"
             etConfirmPass.requestFocus()
             return false
@@ -281,8 +290,15 @@ class SignupActivity : AppCompatActivity() {
             etPhone.requestFocus()
             return false
         }
+        if(etMail.text.toString().isEmpty()){
+            etMail.error = "Enter Email"
+            etMail.requestFocus()
+            return false
+        }
         if (!etMail.text.contains("@")) {
-            etMail.error = "Invalid Email"
+            etMail.error = "Invalid Email Format"
+            etMail.requestFocus()
+            return false
         }
         return true
     }

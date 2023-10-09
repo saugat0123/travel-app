@@ -161,7 +161,7 @@ class InsertFoodActivity : AppCompatActivity(), OnMapReadyCallback {
                     withContext(Dispatchers.Main) {
                         Toast.makeText(
                             this@InsertFoodActivity,
-                            "Food Item Added", Toast.LENGTH_SHORT
+                            "Item Added", Toast.LENGTH_SHORT
                         ).show()
                     }
                 }

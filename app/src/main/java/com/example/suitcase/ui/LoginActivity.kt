@@ -155,7 +155,9 @@ class LoginActivity : AppCompatActivity() {
             return false
         }
         if (!etEmail.text.contains("@")) {
-            etEmail.error = "Invalid Email"
+            etEmail.error = "Invalid Email Format"
+            etEmail.requestFocus()
+            return false
         }
         if(etPassword.text.toString().isEmpty()){
             etPassword.error = "Enter Password"

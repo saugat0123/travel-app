@@ -24,7 +24,7 @@
             android:gravity="center"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="Food Details" />
+            android:text=" Details" />
 
         <ImageView
             android:id="@+id/imgProfile"
@@ -43,7 +43,7 @@
             android:textSize="25sp"
             android:layout_marginTop="20dp"
             android:layout_marginRight="20dp"
-            android:hint="Food Name" />
+            android:hint=" Name" />
 
         <EditText
             android:id="@+id/etType"
@@ -54,7 +54,7 @@
             android:textSize="25sp"
             android:layout_marginTop="20dp"
             android:layout_marginRight="20dp"
-            android:hint="Food Type" />
+            android:hint=" Type" />
 
         <EditText
             android:id="@+id/etPrice"
@@ -65,7 +65,7 @@
             android:textSize="25sp"
             android:layout_marginTop="20dp"
             android:layout_marginRight="20dp"
-            android:hint="Food Price" />
+            android:hint=" Price" />
 
         <EditText
             android:id="@+id/etRating"
@@ -76,11 +76,11 @@
             android:textSize="25sp"
             android:layout_marginTop="20dp"
             android:layout_marginRight="20dp"
-            android:hint="Food Rating" />
+            android:hint=" Rating" />
 
         <Button
             android:id="@+id/btnAdd"
-            android:text="Add Food"
+            android:text="Add "
             android:layout_marginTop="20dp"
             android:layout_gravity="center"
             android:layout_width="wrap_content"
