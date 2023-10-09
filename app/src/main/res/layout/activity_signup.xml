@@ -80,6 +80,7 @@
             android:background="@drawable/custom_input"
             android:paddingStart="10dp"
             android:textSize="16sp"
+            android:inputType="textPassword"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             tools:ignore="RtlCompat" />
@@ -92,6 +93,7 @@
             android:background="@drawable/custom_input"
             android:paddingStart="10dp"
             android:textSize="16sp"
+            android:inputType="textPassword"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             tools:ignore="RtlCompat" />

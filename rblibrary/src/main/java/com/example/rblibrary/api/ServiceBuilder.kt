@@ -5,10 +5,13 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object ServiceBuilder {
-    private const val BASE_URL =
-//        "http://192.168.1.86:3000/"
-//    private const val BASE_URL =
-            "http://10.0.2.2:3000/"
+    // for running the app on the phone
+//    private const val BASE_URL = "http://your_ip_address:3000/"
+
+    // for running the app on the local PC
+    private const val BASE_URL = "http://10.0.2.2:3000/"
+
+
     var token: String? = null
     var id: String? = null
 

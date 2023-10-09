@@ -63,7 +63,9 @@ class SignupActivity : AppCompatActivity() {
         }
 
         btnSignup.setOnClickListener {
-            registerUser()
+            if (validate()) {
+                registerUser()
+            }
         }
 
         tvLogin.setOnClickListener {
@@ -241,5 +243,47 @@ class SignupActivity : AppCompatActivity() {
         etPhone.setText("")
         etMail.setText("")
         etFirstName.requestFocus()
+    }
+
+    private fun validate(): Boolean {
+        if(etFirstName.text.toString().isEmpty()){
+            etFirstName.error = "Enter First Name"
+            etFirstName.requestFocus()
+            return false
+        }
+        if(etLastName.text.toString().isEmpty()){
+            etMail.error = "Enter Email"
+            etMail.requestFocus()
+            return false
+        }
+        if(etPassword.text.toString().isEmpty()){
+            etPassword.error = "Enter Password"
+            etPassword.requestFocus()
+            return false
+        }
+        if(etConfirmPass.text.toString().isEmpty()){
+            etConfirmPass.error = "Enter Password"
+            etConfirmPass.requestFocus()
+            return false
+        }
+        if (etPassword.text != etConfirmPass.text){
+            etConfirmPass.error = "Password do not match"
+            etConfirmPass.requestFocus()
+            return false
+        }
+        if(etAddress.text.toString().isEmpty()){
+            etAddress.error = "Enter Address"
+            etAddress.requestFocus()
+            return false
+        }
+        if(etPhone.text.toString().isEmpty()){
+            etPhone.error = "Enter Phone"
+            etPhone.requestFocus()
+            return false
+        }
+        if (!etMail.text.contains("@")) {
+            etMail.error = "Invalid Email"
+        }
+        return true
     }
 }

@@ -150,15 +150,19 @@ class LoginActivity : AppCompatActivity() {
 
     private fun validate(): Boolean {
         if(etEmail.text.toString().isEmpty()){
-            etEmail.error = "Blank Email"
+            etEmail.error = "Enter Email"
             etEmail.requestFocus()
             return false
         }
-        else if(etPassword.text.toString().isEmpty()){
-            etPassword.error = "Blank Password"
+        if (!etEmail.text.contains("@")) {
+            etEmail.error = "Invalid Email"
+        }
+        if(etPassword.text.toString().isEmpty()){
+            etPassword.error = "Enter Password"
             etPassword.requestFocus()
             return false
         }
+
         return true
     }
 
